@@ -4,8 +4,6 @@ import main.entity.Batter;
 import main.entity.Pitcher;
 import main.enums.BatResult;
 
-import java.util.Random;
-
 public class BatterBox {
 
     public Pitcher pitcher;
@@ -29,29 +27,22 @@ public class BatterBox {
         Pitching pitching = new Pitching();
         Batting batting = new Batting();
         //投球結果処理
-        Random rand = new Random();
-        int num = rand.nextInt(100);
+        JudgeOneBallResult judgeOneBallResult =
+                new JudgeOneBallResult(batting.getBattingResult(), pitching.getPitchingResult());
 
-        if (num > 70) {
-            Random rand2 = new Random();
-            int num2 = rand.nextInt(100);
-            if (num2 > 50) {
-                batterBoxResult = BatResult.OUT;
-            }
-            else if (num2 > 5) {
-                batterBoxResult = BatResult.HIT;
-            }
-            else {
-                batterBoxResult = BatResult.HOMERUN;
-            }
-            return false;
+        switch (judgeOneBallResult.getOneBallResult()) {
+            case STRIKE:
+                this.strikeCount += 1;
+                break;
+            case BALL:
+                this.ballCount += 1;
+                break;
+            case CONNECT:
+                ConnectResult connectResult = new ConnectResult();
+                this.batterBoxResult = connectResult.getConnectResult();
+                return false;
         }
-        else if (num > 30) {
-            this.strikeCount += 1;
-        }
-        else {
-            this.ballCount += 1;
-        }
+
         if (this.strikeCount >= 3) {
             batterBoxResult = BatResult.OUT;
             return false;

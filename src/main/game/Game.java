@@ -35,7 +35,7 @@ public class Game {
         inning.initialized();
         //アウトカウントが3未満なら続行
         while (true) {
-            BatterResult batterResult = new BatterResult();
+            main.game.BatterResult batterResult = new main.game.BatterResult();
             //打席結果
             BatResult batResult = batterResult.getResult();
             switch (batResult) {

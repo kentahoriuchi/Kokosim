@@ -1,6 +1,10 @@
 package main.game;
 
 import main.entity.Batter;
+import main.enums.BatResult;
+import main.enums.BattingResult;
+
+import java.util.Random;
 
 public class Batting {
     public Batter batter;
@@ -9,5 +13,17 @@ public class Batting {
         this.batter = batter;
     }
     public Batting() {}
+
+    public BattingResult getBattingResult() {
+        Random rand = new Random();
+        int num = rand.nextInt(100);
+
+        if (num > 50) {
+            return BattingResult.SWING;
+        }
+        else {
+            return BattingResult.WAIT;
+        }
+    }
 
 }
