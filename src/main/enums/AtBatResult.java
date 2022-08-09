@@ -1,6 +1,6 @@
 package main.enums;
 
-public enum BatResult {
+public enum AtBatResult {
     //アウト
     OUT(0),
     //ヒット
@@ -13,7 +13,7 @@ public enum BatResult {
 
     private int id; // フィールドの定義
 
-    private BatResult(int id) { // コンストラクタの定義
+    private AtBatResult(int id) { // コンストラクタの定義
         this.id = id;
     }
 }

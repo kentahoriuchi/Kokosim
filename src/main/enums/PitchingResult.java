@@ -1,7 +1,5 @@
 package main.enums;
 
-import main.game.Pitching;
-
 public enum PitchingResult {
     //ストライク
     STRIKE(0),

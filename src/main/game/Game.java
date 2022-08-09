@@ -2,7 +2,7 @@ package main.game;
 
 import main.entity.Scores;
 import main.entity.Team;
-import main.enums.BatResult;
+import main.enums.AtBatResult;
 import main.enums.GameResult;
 
 public class Game {
@@ -35,10 +35,10 @@ public class Game {
         inning.initialized();
         //アウトカウントが3未満なら続行
         while (true) {
-            main.game.BatterResult batterResult = new main.game.BatterResult();
+            AtBat atBat = new AtBat();
             //打席結果
-            BatResult batResult = batterResult.getResult();
-            switch (batResult) {
+            AtBatResult atBatResult = atBat.getAtBatResult();
+            switch (atBatResult) {
                 case HIT:
                     inning.hitProcess();
                     break;
@@ -52,7 +52,7 @@ public class Game {
                     inning.addOutCount();
                     break;
             }
-            System.out.println("Result : " + batResult);
+            System.out.println("Result : " + atBatResult);
             System.out.println("Runner : " + inning.getRunner());
             System.out.println("Out : " + inning.getOutCount());
             if (inning.changeJudge()) {

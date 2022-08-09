@@ -1,16 +1,15 @@
 package main.game;
 
-import main.enums.BatResult;
 import main.enums.BattingResult;
 import main.enums.OneBallResult;
 import main.enums.PitchingResult;
 
-public class JudgeOneBallResult {
+public class OneBall {
 
     private BattingResult battingResult;
     private PitchingResult pitchingResult;
 
-    public JudgeOneBallResult(BattingResult battingResult, PitchingResult pitchingResult) {
+    public OneBall(BattingResult battingResult, PitchingResult pitchingResult) {
         this.battingResult = battingResult;
         this.pitchingResult = pitchingResult;
     }

@@ -1,7 +1,5 @@
 package main.enums;
 
-import main.game.Batting;
-
 public enum BattingResult {
     //スイング
     SWING(0),
