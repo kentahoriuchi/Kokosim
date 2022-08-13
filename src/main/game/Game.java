@@ -30,10 +30,12 @@ public class Game {
     public void gameProcess (MainFrame frame) {
         //1回から9回まで得点を記録する
         for (int i = 0 ; i < 9 ; i++) {
+            //先行
             frame.setInning(i+1, "表");
             System.out.println(Integer.toString(i+1) + "回表");
             GameInningProcess(firstTeamScore, frame);
             frame.setScoreBoard(i,0, inning.getScore());
+            //後攻
             frame.setInning(i+1, "裏");
             System.out.println(Integer.toString(i+1) + "回裏");
             GameInningProcess(secondTeamScore, frame);
@@ -51,6 +53,10 @@ public class Game {
         frame.initializedOutCount();
         //アウトカウントが3未満なら続行
         while (true) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+            }
             //バッターカウント、結果表示初期化
             frame.initializedBatterCount();
             frame.initializedBatterResultLabel();

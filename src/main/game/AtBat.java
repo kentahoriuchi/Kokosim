@@ -37,6 +37,10 @@ public class AtBat {
     }
 
     public boolean OneBall(MainFrame frame) {
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+        }
         Pitching pitching = new Pitching();
         Batting batting = new Batting();
         //投球結果処理
