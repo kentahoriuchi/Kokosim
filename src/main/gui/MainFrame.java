@@ -31,4 +31,8 @@ public class MainFrame extends JFrame {
   public void setTeamName(int i, String team) {
     scoreBoardPanel.setTeamName(i, team);
   }
+  //イニング表示
+  public void setInning(int inning, String topOrBottom) {
+    gameMainPanel.setInning(inning, topOrBottom);
+  }
 }

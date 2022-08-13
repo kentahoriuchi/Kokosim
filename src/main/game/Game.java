@@ -30,9 +30,11 @@ public class Game {
     public void gameProcess (MainFrame frame) {
         //1回から9回まで得点を記録する
         for (int i = 0 ; i < 9 ; i++) {
+            frame.setInning(i+1, "表");
             System.out.println(Integer.toString(i+1) + "回表");
             GameInningProcess(firstTeamScore);
             frame.setScoreBoard(i,0, inning.getScore());
+            frame.setInning(i+1, "裏");
             System.out.println(Integer.toString(i+1) + "回裏");
             GameInningProcess(secondTeamScore);
             frame.setScoreBoard(i,1, inning.getScore());

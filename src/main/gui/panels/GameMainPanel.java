@@ -17,7 +17,7 @@ public class GameMainPanel extends JPanel {
   String imgPath = "./src/main/gui/panels/img/baseballStadium.png";
   Image img = Toolkit.getDefaultToolkit().getImage(imgPath);
 
-  TextLabel inningLabel = new TextLabel("１回表", 50, 50, 30);
+  TextLabel inningLabel = new TextLabel("", 50, 50, 30);
   CountLabel countLabel = new CountLabel();
   TextLabel batterResultLabel = new TextLabel("安打", 50, 50, 30);
 
@@ -40,4 +40,7 @@ public class GameMainPanel extends JPanel {
     g.drawImage(img, 0, 0, 600, 450, this);
   }
 
+  public void setInning(int inning, String topOrBottom) {
+    inningLabel.setText(String.valueOf(inning) + "回" + topOrBottom);
+  }
 }
