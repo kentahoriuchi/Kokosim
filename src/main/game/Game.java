@@ -4,6 +4,7 @@ import main.entity.Scores;
 import main.entity.Team;
 import main.enums.AtBatResult;
 import main.enums.GameResult;
+import main.gui.MainFrame;
 
 public class Game {
 
@@ -15,19 +16,30 @@ public class Game {
 
     Inning inning = new Inning();
 
-    public void gameInitilized () {
+    public void gameInitilized (MainFrame frame) {
         firstTeamScore.initializedScore();
         secondTeamScore.initializedScore();
+
+        team1.setTeamName("team1");
+        team2.setTeamName("team2");
+
+        frame.setTeamName(0, team1.getTeamName());
+        frame.setTeamName(1, team2.getTeamName());
     }
 
-    public void gameProcess () {
+    public void gameProcess (MainFrame frame) {
         //1回から9回まで得点を記録する
         for (int i = 0 ; i < 9 ; i++) {
             System.out.println(Integer.toString(i+1) + "回表");
             GameInningProcess(firstTeamScore);
+            frame.setScoreBoard(i,0, inning.getScore());
             System.out.println(Integer.toString(i+1) + "回裏");
             GameInningProcess(secondTeamScore);
+            frame.setScoreBoard(i,1, inning.getScore());
         }
+        //合計得点の表示
+        frame.setScoreBoard(9,0, firstTeamScore.sumScore());
+        frame.setScoreBoard(9,1, secondTeamScore.sumScore());
     }
 
     //イニング処理
