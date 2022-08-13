@@ -9,6 +9,8 @@ import java.awt.Toolkit;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import main.enums.AtBatResult;
+import main.enums.CountItem;
 import main.gui.labels.CountLabel;
 import main.gui.labels.TextLabel;
 
@@ -19,7 +21,7 @@ public class GameMainPanel extends JPanel {
 
   TextLabel inningLabel = new TextLabel("", 50, 50, 30);
   CountLabel countLabel = new CountLabel();
-  TextLabel batterResultLabel = new TextLabel("安打", 50, 50, 30);
+  TextLabel batterResultLabel = new TextLabel("", 50, 50, 30);
 
   public GameMainPanel() {
     setBackground(Color.RED);
@@ -42,5 +44,29 @@ public class GameMainPanel extends JPanel {
 
   public void setInning(int inning, String topOrBottom) {
     inningLabel.setText(String.valueOf(inning) + "回" + topOrBottom);
+  }
+
+  public void setCount(int count, CountItem countItem) {
+    countLabel.setCount(count, countItem);
+  }
+
+  public void setBatterResultLabel(AtBatResult atBatResult) {
+    switch (atBatResult) {
+      case OUT:
+        batterResultLabel.setText("アウト");
+        break;
+      case HIT:
+        batterResultLabel.setText("安打");
+        break;
+      case HOMERUN:
+        batterResultLabel.setText("本塁打");
+        break;
+      case FOURBALL:
+        batterResultLabel.setText("四球");
+        break;
+      case NONE:
+        batterResultLabel.setText("");
+        break;
+    }
   }
 }

@@ -3,7 +3,7 @@ package main;
 import main.game.Game;
 import main.gui.MainFrame;
 
-public class App {
+public class GameApp {
     public static void main(String[] args) throws Exception {
 
         Game game = new Game();

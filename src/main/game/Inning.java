@@ -1,5 +1,8 @@
 package main.game;
 
+import main.enums.CountItem;
+import main.gui.MainFrame;
+
 public class Inning {
     //アウトカウント
     private int outCount;
@@ -88,11 +91,12 @@ public class Inning {
         return n;
     }
 
-    public boolean changeJudge() {
+    public boolean changeJudge(MainFrame frame) {
         if (this.outCount >= 3) {
             return true;
         }
         else {
+            frame.setCount(outCount, CountItem.OUT); //アウトカウント更新
             return false;
         }
     }
