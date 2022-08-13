@@ -15,7 +15,7 @@ public class MainFrame extends JFrame {
 
   MainFrame (String title) {
     setTitle(title);
-    setBounds(100, 100, 600, 600);
+    setBounds(100, 100, 600, 650);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     //パネルの追加
