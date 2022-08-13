@@ -9,19 +9,28 @@ import java.awt.Toolkit;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import main.gui.labels.InningLabel;
+import main.gui.labels.CountLabel;
+import main.gui.labels.TextLabel;
 
 public class GameMainPanel extends JPanel {
 
   String imgPath = "./src/main/gui/panels/img/baseballStadium.png";
   Image img = Toolkit.getDefaultToolkit().getImage(imgPath);
 
-  InningLabel inningLabel = new InningLabel("１回表");
+  TextLabel inningLabel = new TextLabel("１回表", 50, 50, 30);
+  CountLabel countLabel = new CountLabel();
+  TextLabel batterResultLabel = new TextLabel("安打", 50, 50, 30);
 
   public GameMainPanel() {
     setBackground(Color.RED);
+    setLayout(null);
     setPreferredSize(new Dimension(600, 450));
+    inningLabel.setBounds(30, 0, 100, 50);
     add(inningLabel);
+    countLabel.setBounds(470, 0, 130, 130);
+    add(countLabel);
+    batterResultLabel.setBounds(30, 350, 100, 50);
+    add(batterResultLabel);
   }
 
   public void paintComponent(Graphics g) {
