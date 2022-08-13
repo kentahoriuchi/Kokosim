@@ -4,6 +4,7 @@ import main.entity.Scores;
 import main.entity.Team;
 import main.enums.AtBatResult;
 import main.enums.GameResult;
+import main.gui.MainFrame;
 
 public class Game {
 
@@ -15,29 +16,55 @@ public class Game {
 
     Inning inning = new Inning();
 
-    public void gameInitilized () {
+    public void gameInitilized (MainFrame frame) {
         firstTeamScore.initializedScore();
         secondTeamScore.initializedScore();
+
+        team1.setTeamName("team1");
+        team2.setTeamName("team2");
+
+        frame.setTeamName(0, team1.getTeamName());
+        frame.setTeamName(1, team2.getTeamName());
     }
 
-    public void gameProcess () {
+    public void gameProcess (MainFrame frame) {
         //1回から9回まで得点を記録する
         for (int i = 0 ; i < 9 ; i++) {
+            //先行
+            frame.setInning(i+1, "表");
             System.out.println(Integer.toString(i+1) + "回表");
-            GameInningProcess(firstTeamScore);
+            GameInningProcess(firstTeamScore, frame);
+            frame.setScoreBoard(i,0, inning.getScore());
+            //後攻
+            frame.setInning(i+1, "裏");
             System.out.println(Integer.toString(i+1) + "回裏");
-            GameInningProcess(secondTeamScore);
+            GameInningProcess(secondTeamScore, frame);
+            frame.setScoreBoard(i,1, inning.getScore());
         }
+        //合計得点の表示
+        frame.setScoreBoard(9,0, firstTeamScore.sumScore());
+        frame.setScoreBoard(9,1, secondTeamScore.sumScore());
     }
 
     //イニング処理
-    public void GameInningProcess(Scores scores) {
+    public void GameInningProcess(Scores scores, MainFrame frame) {
+        //イニング初期化
         inning.initialized();
+        frame.initializedOutCount();
         //アウトカウントが3未満なら続行
         while (true) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+            }
+            //バッターカウント、結果表示初期化
+            frame.initializedBatterCount();
+            frame.initializedBatterResultLabel();
+
             AtBat atBat = new AtBat();
             //打席結果
-            AtBatResult atBatResult = atBat.getAtBatResult();
+            AtBatResult atBatResult = atBat.getAtBatResult(frame);
+            frame.setBatterResultLabel(atBatResult); //打席結果表示
             switch (atBatResult) {
                 case HIT:
                     inning.hitProcess();
@@ -55,7 +82,7 @@ public class Game {
             System.out.println("Result : " + atBatResult);
             System.out.println("Runner : " + inning.getRunner());
             System.out.println("Out : " + inning.getOutCount());
-            if (inning.changeJudge()) {
+            if (inning.changeJudge(frame)) {
                 scores.addScore(inning.getScore());
                 System.out.println("Score : " + inning.getScore());
                 break;

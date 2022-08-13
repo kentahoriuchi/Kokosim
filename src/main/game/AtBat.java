@@ -3,9 +3,11 @@ package main.game;
 import main.entity.Batter;
 import main.entity.Pitcher;
 import main.enums.AtBatResult;
+import main.enums.CountItem;
 import main.game.part.Batting;
 import main.game.part.WhenConnect;
 import main.game.part.Pitching;
+import main.gui.MainFrame;
 
 public class AtBat {
     //プレイヤー情報
@@ -26,15 +28,19 @@ public class AtBat {
     public AtBat() {
     }
 
-    public AtBatResult getAtBatResult() {
+    public AtBatResult getAtBatResult(MainFrame frame) {
         while(true) {
-            if (!this.OneBall()) {
+            if (!this.OneBall(frame)) {
                 return this.batterBoxResult;
             }
         }
     }
 
-    public boolean OneBall() {
+    public boolean OneBall(MainFrame frame) {
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+        }
         Pitching pitching = new Pitching();
         Batting batting = new Batting();
         //投球結果処理
@@ -53,7 +59,6 @@ public class AtBat {
                 this.batterBoxResult = whenConnect.getConnectResult();
                 return false;
         }
-
         if (this.strikeCount >= 3) {
             batterBoxResult = AtBatResult.OUT;
             return false;
@@ -62,6 +67,9 @@ public class AtBat {
             batterBoxResult = AtBatResult.FOURBALL;
             return false;
         }
+        //カウント更新
+        frame.setCount(ballCount, CountItem.BALL);
+        frame.setCount(strikeCount, CountItem.STRIKE);
         return true;
     }
 }

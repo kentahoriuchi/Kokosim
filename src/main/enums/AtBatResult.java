@@ -8,7 +8,9 @@ public enum AtBatResult {
     //ホームラン
     HOMERUN(2),
     //フォアボール
-    FOURBALL(3);
+    FOURBALL(3),
+    //初期化用
+    NONE(99);
 
 
     private int id; // フィールドの定義
