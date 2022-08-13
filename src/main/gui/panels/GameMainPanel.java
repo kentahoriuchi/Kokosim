@@ -1,6 +1,7 @@
 package main.gui.panels;
 
 import javax.swing.JPanel;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -11,6 +12,7 @@ import java.nio.file.Paths;
 
 import main.enums.AtBatResult;
 import main.enums.CountItem;
+import main.gui.events.OneBallHandler;
 import main.gui.labels.CountLabel;
 import main.gui.labels.TextLabel;
 
@@ -22,6 +24,9 @@ public class GameMainPanel extends JPanel {
   TextLabel inningLabel = new TextLabel("", 50, 50, 30);
   CountLabel countLabel = new CountLabel();
   TextLabel batterResultLabel = new TextLabel("", 50, 50, 30);
+  Button button = new Button("一球ごと");
+  OneBallHandler oneBallHandler = new OneBallHandler();
+
 
   public GameMainPanel() {
     setBackground(Color.RED);
@@ -33,6 +38,9 @@ public class GameMainPanel extends JPanel {
     add(countLabel);
     batterResultLabel.setBounds(30, 350, 100, 50);
     add(batterResultLabel);
+    button.setBounds(275, 0, 50,50);
+    button.addActionListener(oneBallHandler);
+    add(button);
   }
 
   public void paintComponent(Graphics g) {

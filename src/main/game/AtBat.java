@@ -5,8 +5,8 @@ import main.entity.Pitcher;
 import main.enums.AtBatResult;
 import main.enums.CountItem;
 import main.game.part.Batting;
-import main.game.part.WhenConnect;
 import main.game.part.Pitching;
+import main.game.part.WhenConnect;
 import main.gui.MainFrame;
 
 public class AtBat {
@@ -35,6 +35,7 @@ public class AtBat {
             }
         }
     }
+
 
     public boolean OneBall(MainFrame frame) {
         try {
