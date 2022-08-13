@@ -6,11 +6,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
-public class Score extends JLabel {
+public class ScoreBoardTeamLabel extends JLabel {
 
-  public Score(String text) {
+  public ScoreBoardTeamLabel(String text) {
     setText(text);
-    setPreferredSize(new Dimension(50, 45));
+    setPreferredSize(new Dimension(100, 45));
     setHorizontalAlignment(JLabel.CENTER);
     setBorder(new LineBorder(Color.WHITE,2));
     setFont(new Font("Serif", Font.PLAIN, 30));

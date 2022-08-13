@@ -6,8 +6,8 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
-import main.gui.labels.Score;
-import main.gui.labels.ScoreBoardTeam;
+import main.gui.labels.ScoreBoardLabel;
+import main.gui.labels.ScoreBoardTeamLabel;
 
 public class ScoreBoardPanel extends JPanel {
 
@@ -27,19 +27,19 @@ public class ScoreBoardPanel extends JPanel {
     }
     for (int i = 1; i < 3; i++) {
       for (int j = 2; j < 11; j++) {
-        addScoreBoard("１", j, i);
+        addScoreBoard("0", j, i);
       }
     }
   }
 
   void addScoreBoard(String text, int x, int y) {
-    Score score = new Score(text);
-    gbl.setConstraints(score, addContent(x, y, 1, 1));
-    add(score);
+    ScoreBoardLabel scoreBoardLabel = new ScoreBoardLabel(text);
+    gbl.setConstraints(scoreBoardLabel, addContent(x, y, 1, 1));
+    add(scoreBoardLabel);
   }
 
   void addTeamName(String team, int x, int y) {
-    ScoreBoardTeam score = new ScoreBoardTeam(team);
+    ScoreBoardTeamLabel score = new ScoreBoardTeamLabel(team);
     gbl.setConstraints(score, addContent(x, y, 2, 1));
     add(score);
   }

@@ -4,9 +4,9 @@ import javax.swing.JLabel;
 import java.awt.Dimension;
 import java.awt.Font;
 
-public class Inning extends JLabel {
+public class InningLabel extends JLabel {
 
-  public Inning(String text) {
+  public InningLabel(String text) {
     setText(text);
     setPreferredSize(new Dimension(550, 50));
     setHorizontalAlignment(JLabel.LEFT);

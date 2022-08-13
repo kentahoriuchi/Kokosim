@@ -9,19 +9,19 @@ import java.awt.Toolkit;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import main.gui.labels.Inning;
+import main.gui.labels.InningLabel;
 
 public class GameMainPanel extends JPanel {
 
   String imgPath = "./src/main/gui/panels/img/baseballStadium.png";
   Image img = Toolkit.getDefaultToolkit().getImage(imgPath);
 
-  Inning inning = new Inning("１回表");
+  InningLabel inningLabel = new InningLabel("１回表");
 
   public GameMainPanel() {
     setBackground(Color.RED);
     setPreferredSize(new Dimension(600, 450));
-    add(inning);
+    add(inningLabel);
   }
 
   public void paintComponent(Graphics g) {
