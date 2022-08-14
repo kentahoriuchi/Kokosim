@@ -52,4 +52,8 @@ public class MainFrame extends JFrame {
   public void initializedBatterResultLabel() {
     gameMainPanel.setBatterResultLabel(AtBatResult.NONE);
   }
+  //ランナー表示
+  public void setRunner(boolean[] runner) { gameMainPanel.setRunner(runner); }
+  //ランナー初期化
+  public void initializedRunner() { gameMainPanel.setRunner(new boolean[] {false,false,false}); }
 }

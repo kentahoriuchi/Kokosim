@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 import main.enums.AtBatResult;
 import main.enums.CountItem;
 import main.gui.labels.CountLabel;
+import main.gui.labels.RunnerLabel;
 import main.gui.labels.TextLabel;
 
 public class GameMainPanel extends JPanel {
@@ -23,6 +24,8 @@ public class GameMainPanel extends JPanel {
   CountLabel countLabel = new CountLabel();
   TextLabel batterResultLabel = new TextLabel("", 50, 50, 30);
 
+  RunnerLabel[] runnerLabels = new RunnerLabel[3];
+
   public GameMainPanel() {
     setBackground(Color.RED);
     setLayout(null);
@@ -33,6 +36,7 @@ public class GameMainPanel extends JPanel {
     add(countLabel);
     batterResultLabel.setBounds(30, 350, 100, 50);
     add(batterResultLabel);
+    this.initialRunnerLabel();
   }
 
   public void paintComponent(Graphics g) {
@@ -67,6 +71,25 @@ public class GameMainPanel extends JPanel {
       case NONE:
         batterResultLabel.setText("");
         break;
+    }
+  }
+
+  public void initialRunnerLabel() {
+    for (int i = 0; i < 3; i++) {
+      runnerLabels[i] = new RunnerLabel();
+    }
+    runnerLabels[0].setBounds(365, 230, 34, 50);
+    add(runnerLabels[0]);
+    runnerLabels[1].setBounds(280, 165, 34, 50);
+    add(runnerLabels[1]);
+    runnerLabels[2].setBounds(200, 230, 34, 50);
+    add(runnerLabels[2]);
+  }
+
+  public void setRunner(boolean[] runner) {
+    for (int i = 0; i < 3; i++) {
+      if (runner[i]) { runnerLabels[i].setRunner(); }
+      else { runnerLabels[i].deleteRunner(); }
     }
   }
 }

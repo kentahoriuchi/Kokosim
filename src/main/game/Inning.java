@@ -97,6 +97,7 @@ public class Inning {
         }
         else {
             frame.setCount(outCount, CountItem.OUT); //アウトカウント更新
+            frame.setRunner(runner); //ランナー更新
             return false;
         }
     }
