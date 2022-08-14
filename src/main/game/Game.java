@@ -33,12 +33,12 @@ public class Game {
             //先行
             frame.setInning(i+1, "表");
             System.out.println(Integer.toString(i+1) + "回表");
-            GameInningProcess(firstTeamScore, frame);
+            gameInningProcess(firstTeamScore, frame);
             frame.setScoreBoard(i,0, inning.getScore());
             //後攻
             frame.setInning(i+1, "裏");
             System.out.println(Integer.toString(i+1) + "回裏");
-            GameInningProcess(secondTeamScore, frame);
+            gameInningProcess(secondTeamScore, frame);
             frame.setScoreBoard(i,1, inning.getScore());
         }
         //合計得点の表示
@@ -47,14 +47,15 @@ public class Game {
     }
 
     //イニング処理
-    public void GameInningProcess(Scores scores, MainFrame frame) {
+    public void gameInningProcess(Scores scores, MainFrame frame) {
         //イニング初期化
         inning.initialized();
         frame.initializedOutCount();
+        frame.initializedRunner();
         //アウトカウントが3未満なら続行
         while (true) {
             try {
-                Thread.sleep(100);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
             }
             //バッターカウント、結果表示初期化
