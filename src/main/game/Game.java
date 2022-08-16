@@ -1,9 +1,11 @@
 package main.game;
 
+import main.entity.PlayerList;
 import main.entity.Scores;
 import main.entity.Team;
 import main.enums.AtBatResult;
 import main.enums.GameResult;
+import main.game.team.MakePlayerList;
 import main.gui.MainFrame;
 
 public class Game {
@@ -16,12 +18,23 @@ public class Game {
 
     Inning inning = new Inning();
 
+    MakePlayerList makePlayerList = new MakePlayerList();
+
     public void gameInitilized (MainFrame frame) {
         firstTeamScore.initializedScore();
         secondTeamScore.initializedScore();
 
         team1.setTeamName("team1");
         team2.setTeamName("team2");
+
+        //ダミーの選手情報を登録
+        PlayerList dummyPlayerList = makePlayerList.getDummyPlayerList();
+        team1.setPlayerList(dummyPlayerList);
+        team2.setPlayerList(dummyPlayerList);
+//        //ダミーが登録されているか確認
+//        for (Player p: team1.getPlayerList().getPlayerList()) {
+//            System.out.println(p.getPlayerName());
+//        }
 
         frame.setTeamName(0, team1.getTeamName());
         frame.setTeamName(1, team2.getTeamName());
